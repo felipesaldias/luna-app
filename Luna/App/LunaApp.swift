@@ -19,7 +19,7 @@ struct LunaApp: App {
                     }
                 }
         }
-        .modelContainer(for: [JournalEntry.self, Anchor.self])
+        .modelContainer(for: [JournalEntry.self, Anchor.self, Promise.self])
     }
 }
 
