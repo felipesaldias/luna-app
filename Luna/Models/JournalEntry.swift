@@ -15,6 +15,7 @@ class JournalEntry {
     var outcome: String?
     var lesson: String?
     var fromProtocol: Bool
+    var rawFeeling: String?
 
     init(
         date: Date = .now,
@@ -28,7 +29,8 @@ class JournalEntry {
         actedFrom: String? = nil,
         outcome: String? = nil,
         lesson: String? = nil,
-        fromProtocol: Bool = false
+        fromProtocol: Bool = false,
+        rawFeeling: String? = nil
     ) {
         self.date = date
         self.trigger = trigger
@@ -42,6 +44,7 @@ class JournalEntry {
         self.outcome = outcome
         self.lesson = lesson
         self.fromProtocol = fromProtocol
+        self.rawFeeling = rawFeeling
     }
 }
 

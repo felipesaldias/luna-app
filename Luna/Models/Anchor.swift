@@ -51,5 +51,27 @@ class Anchor {
         Anchor(text: "Estabilidad es mi superpoder", category: "Crecimiento", linkedProcess: "cambiar", isDefault: true),
         Anchor(text: "Cada vez que no reacciono, me hago mas fuerte", category: "Crecimiento", linkedProcess: "protocolo", isDefault: true),
         Anchor(text: "El cambio real es silencioso y constante", category: "Crecimiento", linkedProcess: "cambiar", isDefault: true),
+
+        // Sanar
+        Anchor(text: "Deja de intentar reconstruir lo mismo", category: "Sanar", linkedProcess: "sanar", isDefault: true),
+        Anchor(text: "Atravesar el dolor es parte del camino", category: "Sanar", linkedProcess: "sanar", isDefault: true),
+        Anchor(text: "Estar bien conmigo, incluso si ella no esta", category: "Sanar", linkedProcess: "sanar", isDefault: true),
+        Anchor(text: "Ver claro para no repetir", category: "Sanar", linkedProcess: "sanar", isDefault: true),
+
+        // La Luna
+        Anchor(text: "No estas perdiendo por lo que paso, sino por como reaccionas", category: "La Luna", linkedProcess: "luna", isDefault: true),
+        Anchor(text: "Tu mente te juega en contra cuando estas ansioso", category: "La Luna", linkedProcess: "luna", isDefault: true),
+        Anchor(text: "Usa la claridad para entenderte, no para defenderte", category: "La Luna", linkedProcess: "luna", isDefault: true),
+        Anchor(text: "Aceptar el dolor sin maquillarlo", category: "La Luna", linkedProcess: "luna", isDefault: true),
+        Anchor(text: "No todo lo que sientes es verdad, pero lo tratas como si lo fuera", category: "La Luna", linkedProcess: "luna", isDefault: true),
+
+        // Mensajes
+        Anchor(text: "Un mensaje. No dos, no cinco. Uno.", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
+        Anchor(text: "Si no responde, no mandes otro", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
+        Anchor(text: "Estoy mandando esto por ella o por mi ansiedad?", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
+        Anchor(text: "El silencio comunica mas que 20 mensajes", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
+        Anchor(text: "Los cambios se demuestran, no se prometen por WhatsApp", category: "Mensajes", linkedProcess: "errores", isDefault: true),
+        Anchor(text: "Tu ansiedad no es su responsabilidad", category: "Mensajes", linkedProcess: "errores", isDefault: true),
+        Anchor(text: "Escuchala. No la interpretes. Escuchala.", category: "Mensajes", linkedProcess: "errores", isDefault: true),
     ]
 }

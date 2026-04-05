@@ -65,6 +65,6 @@ struct LunaWidget: Widget {
         }
         .configurationDisplayName("Luna")
         .description("Acceso rapido al protocolo de emergencia")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

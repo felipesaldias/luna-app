@@ -231,5 +231,289 @@ struct ProcessContent {
             > "No todo lo que pienso cuando estoy alterado es verdad."
             """
         ),
+
+        ProcessTopic(
+            id: "sanar",
+            title: "Como sanar",
+            icon: "heart.circle.fill",
+            content: """
+            ## La Torre — Romper lo que no sirve
+
+            Sanar implica:
+            - Aceptar que algo se rompio
+            - Dejar caer ideas, expectativas o formas de amar que ya no funcionan
+            - No es evitar el dolor. Es atravesarlo y entenderlo
+
+            > "Deja de intentar reconstruir lo mismo."
+
+            ---
+
+            ## 9 de Oros — Volver a ti
+
+            Tu base de sanacion:
+            - Reconectar contigo mismo
+            - Sentirte completo solo
+            - Recuperar tu valor sin depender de ella
+
+            Esto incluye: habitos, autoestima, independencia emocional.
+
+            > "Estar bien contigo, incluso si ella no esta."
+
+            ---
+
+            ## As de Espadas — Claridad brutal
+
+            Sanar requiere:
+            - Honestidad contigo
+            - Ver la verdad sin maquillarla
+            - Entender que hiciste, que no, y que necesitas cambiar
+
+            No es castigarte. Es ver claro para no repetir.
+
+            ---
+
+            ## Los 3 pasos
+
+            1. Aceptar la caida — no niegues lo que paso, no lo romantices
+            2. Reconstruirte a ti — rutina, disciplina, cosas que te hagan sentir orgulloso de ti
+            3. Entenderte — que me gatilla? donde pierdo el control? que necesito cambiar si o si?
+
+            ---
+
+            > "Tu sanacion no pasa por acercarte a ella... pasa por acercarte a ti."
+            """
+        ),
+
+        ProcessTopic(
+            id: "luna",
+            title: "La Luna — Lo que no estas viendo",
+            icon: "moon.stars.fill",
+            content: """
+            ## Esta es la tirada que mas te marco
+
+            Rey de Espadas + 10 de Espadas + La Luna
+
+            ---
+
+            ## Rey de Espadas — Tu forma de procesar
+
+            Necesitas volverte:
+            - Mas claro
+            - Mas racional en momentos clave
+            - Menos reactivo emocionalmente
+
+            Pero ojo: puedes estar usando la mente para:
+            - Justificar cosas
+            - Controlar
+            - Analizar demasiado
+
+            > "Usar la claridad para entenderte, no para defenderte."
+
+            ---
+
+            ## 10 de Espadas — Aceptar el fondo del dolor
+
+            Hay algo que tienes que aceptar:
+            - Algo se rompio de verdad
+            - Hubo un limite que se cruzo (interno o en la relacion)
+            - No puedes seguir actuando como si "no fue tan grave"
+
+            Lo que no estas queriendo ver:
+            - El impacto real de lo que paso (en ti y en ella)
+
+            ---
+
+            ## La Luna — Autoengano y miedo
+
+            Esta es LA clave de toda la tirada.
+
+            Aqui hay:
+            - Inseguridad
+            - Miedo a perder
+            - Pensamientos que te confunden
+            - Historias mentales que no son 100% realidad
+
+            Puede que estes:
+            - Interpretando cosas
+            - Imaginando escenarios
+            - Dejandote llevar por ansiedad
+
+            > "No todo lo que sientes es verdad... pero lo estas tratando como si lo fuera."
+
+            ---
+
+            ## Lo que debes cambiar
+
+            Tu reaccion automatica desde la emocion y el miedo.
+
+            ## Lo que debes aceptar
+
+            Que hubo una ruptura real y que no puedes volver a lo mismo sin transformarte.
+
+            ## Lo que no estas viendo
+
+            Que tu mente te esta jugando en contra cuando estas ansioso.
+
+            ---
+
+            ## En simple
+
+            - Necesitas claridad real (no sobrepensar)
+            - Aceptar el dolor sin maquillarlo
+            - Dejar de creer todo lo que piensas cuando estas emocional
+
+            ---
+
+            ## Ejercicio clave
+
+            Cuando sientas algo fuerte (celos, ansiedad, miedo):
+
+            1. Escribelo
+            2. Pregunta: esto es un hecho o una interpretacion?
+            3. No actues hasta tener claridad
+
+            ---
+
+            > "No estas perdiendo solo por lo que paso... estas perdiendo por como reaccionas a lo que paso."
+            """
+        ),
+        ProcessTopic(
+            id: "mensajes",
+            title: "Antes de escribirle",
+            icon: "message.fill",
+            content: """
+            ## Lo que haces cuando estas ansioso
+
+            - Mandas muchos mensajes seguidos sin esperar respuesta
+            - Cada mensaje sube la intensidad emocional
+            - Prometes cosas desde la desesperacion, no desde la calma
+            - Revisas si te respondio
+            - Borras y editas mensajes (senal de que sabes que no deberias haberlos mandado)
+
+            ---
+
+            ## Que efecto tiene en ella
+
+            - Se siente agobiada
+            - Siente presion para responder
+            - Refuerza su decision de alejarse
+            - La carga emocionalmente con TU proceso
+
+            > "Es tu proceso y yo no quiero estar ahi" — eso te dijo ella
+
+            ---
+
+            ## Reglas antes de escribir
+
+            1. UN solo mensaje. No dos, no tres, no cinco. UNO.
+            2. Si no responde, NO mandes otro. Espera.
+            3. No pidas juntarse mas de una vez. Si dijo que no, respeta.
+            4. No prometas cambios por texto. Los cambios se demuestran, no se anuncian.
+            5. No mandes fotos, audios o memes emocionales buscando reaccion.
+
+            ---
+
+            ## Antes de apretar enviar, preguntate:
+
+            - Estoy mandando esto por ella o por mi ansiedad?
+            - Estoy buscando calmarme a mi o realmente comunicar algo?
+            - Si ella no responde, me voy a sentir peor?
+            - Puedo esperar 1 hora antes de mandar esto?
+
+            Si la respuesta a cualquiera de esas es "es por mi ansiedad" → no lo mandes.
+
+            ---
+
+            ## Lo que SI funciona
+
+            - Mensajes cortos y livianos
+            - Sin carga emocional pesada
+            - Sin expectativa de respuesta
+            - Respetar sus tiempos
+
+            ---
+
+            ## Cosas que NO debes decir/escribir
+
+            - "No me quiero separar del mejor pololo que has tenido"
+            - "Prometo que nunca mas..."
+            - "No quiero perder mi familia"
+            - "Te han joteado?"
+            - Cualquier cosa desde el miedo a perderla
+
+            ---
+
+            ## Cosas que SI puedes decir
+
+            - "Espero que estes bien"
+            - "Avísame si necesitas algo"
+            - Y despues SILENCIO
+
+            ---
+
+            > "El silencio comunica mas que 20 mensajes. Dice: estoy bien, respeto tu espacio, confio en nosotros."
+            """
+        ),
+
+        ProcessTopic(
+            id: "errores",
+            title: "Errores que no debo repetir",
+            icon: "exclamationmark.triangle.fill",
+            content: """
+            ## Mis patrones concretos
+
+            Estos son comportamientos especificos que debo dejar de hacer:
+
+            ---
+
+            ## En mensajes
+
+            - Mandar multiples mensajes seguidos sin respuesta
+            - Editar y borrar mensajes (senal de ansiedad actuando)
+            - Subir la intensidad emocional con cada mensaje
+            - Pedir juntarse repetidamente cuando ya dijo que no
+            - Mandar fotos o cosas buscando reaccion emocional
+
+            ---
+
+            ## En la relacion
+
+            - Cuestionar sus amistades o salidas
+            - Preguntar si la han joteado
+            - No respetar su tiempo con amigas
+            - Hacer comentarios sobre su independencia
+            - Tratar de controlar situaciones sociales
+
+            ---
+
+            ## En mi cabeza
+
+            - Asumir lo peor cuando no responde
+            - Crear historias sobre lo que esta haciendo
+            - Interpretar la distancia como abandono
+            - Buscar senales de que me esta dejando
+
+            ---
+
+            ## Lo que ella necesita de mi
+
+            Ella lo dijo claro:
+            - "No puedo aguantar que alguien no me deje tener mi tiempo y espacio con mis amigos"
+            - "Es algo repetitivo"
+            - "Es tu proceso y yo no quiero estar ahi"
+
+            > Escuchala. No la interpretes. Escuchala.
+
+            ---
+
+            ## Recordatorio clave
+
+            Tu ansiedad no es su responsabilidad.
+            Tu proceso es tuyo.
+            Ella no tiene que cargar con eso.
+
+            > "Los cambios se demuestran, no se prometen por WhatsApp."
+            """
+        ),
     ]
 }

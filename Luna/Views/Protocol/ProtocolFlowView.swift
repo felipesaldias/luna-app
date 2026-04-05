@@ -15,10 +15,12 @@ struct ProtocolFlowView: View {
     @State private var emotion = ""
     @State private var intensity = 3
 
+    @State private var rawFeeling = ""
+
     var body: some View {
         NavigationStack {
             VStack {
-                ProgressView(value: Double(step), total: 5)
+                ProgressView(value: Double(step), total: 6)
                     .tint(.indigo)
                     .padding(.horizontal)
 
@@ -28,7 +30,7 @@ struct ProtocolFlowView: View {
 
                 Spacer()
             }
-            .navigationTitle("Paso \(step + 1) de 5")
+            .navigationTitle("Paso \(step + 1) de 6")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -42,17 +44,19 @@ struct ProtocolFlowView: View {
     private var stepContent: some View {
         switch step {
         case 0:
-            PauseStepView { step = 1 }
+            RawFeelingStep(rawFeeling: $rawFeeling, onNext: { step = 1 })
         case 1:
+            PauseStepView { step = 2 }
+        case 2:
             FactStoryStep(
                 trigger: $trigger, emotion: $emotion, intensity: $intensity,
-                fact: $fact, story: $story, onNext: { step = 2 }
+                fact: $fact, story: $story, rawFeeling: rawFeeling, onNext: { step = 3 }
             )
-        case 2:
-            RegulateStep(regulation: $regulation, onNext: { step = 3 })
         case 3:
-            EvaluateStep(stillReal: $stillReal, onNext: { step = 4 })
+            RegulateStep(regulation: $regulation, onNext: { step = 4 })
         case 4:
+            EvaluateStep(stillReal: $stillReal, onNext: { step = 5 })
+        case 5:
             DecisionStep(
                 worthActing: $worthActing, actingFrom: $actingFrom,
                 onSave: { saveAndDismiss() }
@@ -72,10 +76,45 @@ struct ProtocolFlowView: View {
             story: story,
             didAct: worthActing && actingFrom == "Claridad",
             actedFrom: actingFrom.isEmpty ? nil : actingFrom,
-            fromProtocol: true
+            fromProtocol: true,
+            rawFeeling: rawFeeling.isEmpty ? nil : rawFeeling
         )
         modelContext.insert(entry)
         dismiss()
+    }
+}
+
+// MARK: - Step 0: Raw Feeling
+
+private struct RawFeelingStep: View {
+    @Binding var rawFeeling: String
+    let onNext: () -> Void
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "flame.fill")
+                .font(.system(size: 40))
+                .foregroundStyle(.orange)
+
+            Text("Que estas sintiendo?")
+                .font(.title2)
+                .fontWeight(.semibold)
+
+            Text("Escribe lo que sientes ahora, en caliente.\nDespues de la pausa lo vamos a revisar.")
+                .font(.callout)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+
+            TextField("Escribe lo que sientes...", text: $rawFeeling, axis: .vertical)
+                .textFieldStyle(.roundedBorder)
+                .lineLimit(4...8)
+
+            Button("Siguiente") { onNext() }
+                .buttonStyle(.borderedProminent)
+                .tint(.indigo)
+                .disabled(rawFeeling.isEmpty)
+        }
+        .padding(.horizontal, 24)
     }
 }
 
@@ -87,6 +126,7 @@ private struct FactStoryStep: View {
     @Binding var intensity: Int
     @Binding var fact: String
     @Binding var story: String
+    let rawFeeling: String
     let onNext: () -> Void
 
     var body: some View {
@@ -102,6 +142,20 @@ private struct FactStoryStep: View {
 
                 Text("Separa lo que paso de lo que interpretas")
                     .foregroundStyle(.secondary)
+
+                // Show what they wrote in hot state
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("Lo que escribiste en caliente:")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                    Text(rawFeeling)
+                        .font(.callout)
+                        .italic()
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.orange.opacity(0.1))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
 
                 Picker("Gatillo", selection: $trigger) {
                     Text("Selecciona...").tag("")
