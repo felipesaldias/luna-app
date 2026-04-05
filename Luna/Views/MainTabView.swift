@@ -27,7 +27,11 @@ struct MainTabView: View {
                 MemoriesView()
             }
 
-            Tab("Anclas", systemImage: "moon.fill", value: 5) {
+            Tab("Hitos", systemImage: "heart.text.square", value: 5) {
+                MilestonesView()
+            }
+
+            Tab("Anclas", systemImage: "moon.fill", value: 6) {
                 AnchorsView(deepLinkAnchor: $deepLinkAnchor)
             }
         }
@@ -35,7 +39,7 @@ struct MainTabView: View {
         .tabBarMinimizeBehavior(.onScrollDown)
         .onChange(of: deepLinkAnchor) { _, newValue in
             if newValue != nil {
-                selectedTab = 5
+                selectedTab = 6
             }
         }
     }

@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0816CBA152D15399C8C03393 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45A383A45A5AF4C2D4D7FF /* Milestone.swift */; };
 		0DEED4BE9B48D714C4ADE2B2 /* AddPromiseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E667F93B61401C090DC2D7C2 /* AddPromiseView.swift */; };
 		12CACAAA869D619DE8123742 /* ProcessDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78532438EBD48621D46FCE9B /* ProcessDetailView.swift */; };
+		1BFAA8A1C0F0392C690A0036 /* MilestonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89921B2BDEA405132766B7B /* MilestonesView.swift */; };
 		1CF22825DC0FBBD4712FDAE7 /* JournalStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */; };
 		1F5A8031980EE29758DA5ED9 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22B747BB41EE58A7DE3FA54 /* Promise.swift */; };
 		207E882E55AEDE3717D6329A /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288CE0B12948932F089CBF3 /* JournalView.swift */; };
+		216E1F958DD9EF4643A54CD2 /* AddMilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CCABA2227F3DF482B162DC /* AddMilestoneView.swift */; };
 		21934AE497F6F9A9024DFE86 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */; };
 		30C380DD2427CE1AA947127C /* AnchorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8CC77282981173696BF2A /* AnchorsView.swift */; };
 		330DB89789A348EB9A49CB43 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC86EA87202FBFC3FB8012 /* ProcessView.swift */; };
+		47EFF46CEAEC55FF35B533D2 /* MilestoneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669544C310BCAF5623B0AD07 /* MilestoneDetailView.swift */; };
 		4AA76F82EF66651F2495C0FD /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D99E2329BE538A466E6BEC /* Anchor.swift */; };
 		5024609EE38307661CBC945C /* LunaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446892BB5B365737EE00315F /* LunaApp.swift */; };
 		5D8E325070CB083434E2974B /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */; };
@@ -66,12 +70,14 @@
 		0D2F6B63782B6670C851A5F0 /* ProtocolFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolFlowView.swift; sourceTree = "<group>"; };
 		12D5E7105CF257C2D413DB8E /* ProcessContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessContent.swift; sourceTree = "<group>"; };
 		275B1FBB8D4214ED58996DE3 /* JournalFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalFormView.swift; sourceTree = "<group>"; };
+		33CCABA2227F3DF482B162DC /* AddMilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMilestoneView.swift; sourceTree = "<group>"; };
 		39ECB2569545C7FAEABC8424 /* AppGroupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupConstants.swift; sourceTree = "<group>"; };
 		446892BB5B365737EE00315F /* LunaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaApp.swift; sourceTree = "<group>"; };
 		455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		4B1EA9ECABFE3C9E46D55025 /* LunaWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LunaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalStatsView.swift; sourceTree = "<group>"; };
 		60BA1B3232F7BF9EC4353017 /* AnchorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorDetailView.swift; sourceTree = "<group>"; };
+		669544C310BCAF5623B0AD07 /* MilestoneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDetailView.swift; sourceTree = "<group>"; };
 		6D7AC31A957EBB985493D7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		755B45D8458807D84BB2CD76 /* MemoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDetailView.swift; sourceTree = "<group>"; };
 		78532438EBD48621D46FCE9B /* ProcessDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessDetailView.swift; sourceTree = "<group>"; };
@@ -87,11 +93,13 @@
 		D288CE0B12948932F089CBF3 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		D399E4DA6B951325F78CD25C /* Luna.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9F5B503C88F3E763439554 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		DE45A383A45A5AF4C2D4D7FF /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		E667F93B61401C090DC2D7C2 /* AddPromiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPromiseView.swift; sourceTree = "<group>"; };
 		E716F97E31824EC882E1B903 /* PromisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromisesView.swift; sourceTree = "<group>"; };
 		EFE610EAB9D32022AB6C95E8 /* PauseStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStepView.swift; sourceTree = "<group>"; };
 		F4BC86EA87202FBFC3FB8012 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
 		F87F35469AAE3E1577E2FCC3 /* LunaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaWidget.swift; sourceTree = "<group>"; };
+		F89921B2BDEA405132766B7B /* MilestonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -138,6 +146,7 @@
 				A4D99E2329BE538A466E6BEC /* Anchor.swift */,
 				C3459219B4B7F136AA46F48A /* JournalEntry.swift */,
 				7950BDC83CB7CC695299E4B6 /* Memory.swift */,
+				DE45A383A45A5AF4C2D4D7FF /* Milestone.swift */,
 				A22B747BB41EE58A7DE3FA54 /* Promise.swift */,
 			);
 			path = Models;
@@ -149,6 +158,16 @@
 				12D5E7105CF257C2D413DB8E /* ProcessContent.swift */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		9B2D3834FBCDCA10E8FB5BBF /* Milestones */ = {
+			isa = PBXGroup;
+			children = (
+				33CCABA2227F3DF482B162DC /* AddMilestoneView.swift */,
+				669544C310BCAF5623B0AD07 /* MilestoneDetailView.swift */,
+				F89921B2BDEA405132766B7B /* MilestonesView.swift */,
+			);
+			path = Milestones;
 			sourceTree = "<group>";
 		};
 		A1BC2F17F77E1DD40C9A56A6 /* Promises */ = {
@@ -196,6 +215,7 @@
 				D96E94C62FA1410B824272BC /* Anchors */,
 				C3052A16DDF8C6F8D0D7AF19 /* Journal */,
 				1DDA6D73992CE078CA37D4B9 /* Memories */,
+				9B2D3834FBCDCA10E8FB5BBF /* Milestones */,
 				F33F606D8EC8D7A439876503 /* Process */,
 				A1BC2F17F77E1DD40C9A56A6 /* Promises */,
 				268AA46C1C2FE3CD406A5C5D /* Protocol */,
@@ -329,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED11AC0A0EF338CD683C27D0 /* AddAnchorView.swift in Sources */,
+				216E1F958DD9EF4643A54CD2 /* AddMilestoneView.swift in Sources */,
 				0DEED4BE9B48D714C4ADE2B2 /* AddPromiseView.swift in Sources */,
 				4AA76F82EF66651F2495C0FD /* Anchor.swift in Sources */,
 				89A75A6F7361DABEC9F348E9 /* AnchorDetailView.swift in Sources */,
@@ -344,6 +365,9 @@
 				95C7820C1B19746627BC2C4A /* MemoriesView.swift in Sources */,
 				EBC6E6550B1A660705DC5061 /* Memory.swift in Sources */,
 				F94E76F74342E9A5A5B6ED5E /* MemoryDetailView.swift in Sources */,
+				0816CBA152D15399C8C03393 /* Milestone.swift in Sources */,
+				47EFF46CEAEC55FF35B533D2 /* MilestoneDetailView.swift in Sources */,
+				1BFAA8A1C0F0392C690A0036 /* MilestonesView.swift in Sources */,
 				21934AE497F6F9A9024DFE86 /* NotificationSettingsView.swift in Sources */,
 				796CA3FA39E693DB01A2C332 /* PauseStepView.swift in Sources */,
 				89FA3BF00525FB453E937E98 /* ProcessContent.swift in Sources */,
