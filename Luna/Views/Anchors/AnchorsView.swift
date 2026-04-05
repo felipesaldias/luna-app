@@ -4,9 +4,11 @@ import SwiftData
 struct AnchorsView: View {
     @Query(sort: \Anchor.createdAt) private var anchors: [Anchor]
     @Environment(\.modelContext) private var modelContext
+    @Binding var deepLinkAnchor: String?
     @State private var showAddSheet = false
     @State private var showNotificationSettings = false
     @State private var hasSeeded = false
+    @State private var selectedAnchor: Anchor?
 
     var body: some View {
         NavigationStack {
@@ -14,7 +16,11 @@ struct AnchorsView: View {
                 ForEach(groupedAnchors.keys.sorted(), id: \.self) { category in
                     Section(category) {
                         ForEach(groupedAnchors[category] ?? []) { anchor in
-                            AnchorRow(anchor: anchor)
+                            NavigationLink(destination: AnchorDetailView(anchor: anchor)) {
+                                Text(anchor.text)
+                                    .font(.body)
+                                    .padding(.vertical, 2)
+                            }
                         }
                         .onDelete { offsets in
                             deleteAnchors(in: category, at: offsets)
@@ -43,10 +49,28 @@ struct AnchorsView: View {
             .sheet(isPresented: $showNotificationSettings) {
                 NotificationSettingsView(anchors: anchors)
             }
+            .sheet(item: $selectedAnchor) { anchor in
+                NavigationStack {
+                    AnchorDetailView(anchor: anchor)
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Cerrar") { selectedAnchor = nil }
+                            }
+                        }
+                }
+            }
             .task {
                 if anchors.isEmpty && !hasSeeded {
                     seedDefaults()
                     hasSeeded = true
+                }
+            }
+            .onChange(of: deepLinkAnchor) { _, text in
+                if let text {
+                    if let match = anchors.first(where: { $0.text == text }) {
+                        selectedAnchor = match
+                    }
+                    deepLinkAnchor = nil
                 }
             }
         }
@@ -66,32 +90,6 @@ struct AnchorsView: View {
         let categoryAnchors = groupedAnchors[category] ?? []
         for index in offsets {
             modelContext.delete(categoryAnchors[index])
-        }
-    }
-}
-
-private struct AnchorRow: View {
-    let anchor: Anchor
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(anchor.text)
-                .font(.body)
-            if let process = anchor.linkedProcess {
-                NavigationLink(destination: linkedProcessView(process)) {
-                    Text("Ver en Mi Proceso")
-                        .font(.caption)
-                        .foregroundStyle(.indigo)
-                }
-            }
-        }
-        .padding(.vertical, 2)
-    }
-
-    @ViewBuilder
-    private func linkedProcessView(_ id: String) -> some View {
-        if let topic = ProcessContent.topics.first(where: { $0.id == id }) {
-            ProcessDetailView(topic: topic)
         }
     }
 }
