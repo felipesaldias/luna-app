@@ -21,6 +21,7 @@
 		796CA3FA39E693DB01A2C332 /* PauseStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE610EAB9D32022AB6C95E8 /* PauseStepView.swift */; };
 		80D9608FF5A22D96A7F7B09C /* LunaWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4B1EA9ECABFE3C9E46D55025 /* LunaWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		88C774EF70A57CE584807236 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9F5B503C88F3E763439554 /* MainTabView.swift */; };
+		89A75A6F7361DABEC9F348E9 /* AnchorDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BA1B3232F7BF9EC4353017 /* AnchorDetailView.swift */; };
 		89FA3BF00525FB453E937E98 /* ProcessContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D5E7105CF257C2D413DB8E /* ProcessContent.swift */; };
 		90FCF1F3995FF024F7360C05 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3459219B4B7F136AA46F48A /* JournalEntry.swift */; };
 		BDDB176B85DE0E4C851FE5D6 /* JournalFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B1FBB8D4214ED58996DE3 /* JournalFormView.swift */; };
@@ -62,6 +63,8 @@
 		455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
 		4B1EA9ECABFE3C9E46D55025 /* LunaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LunaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalStatsView.swift; sourceTree = "<group>"; };
+		60BA1B3232F7BF9EC4353017 /* AnchorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorDetailView.swift; sourceTree = "<group>"; };
+		6D7AC31A957EBB985493D7CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		78532438EBD48621D46FCE9B /* ProcessDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessDetailView.swift; sourceTree = "<group>"; };
 		81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		8DE666EAE46EF30FF549705D /* AddAnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnchorView.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		BC9B773103EC946270426901 /* LunaWidget */ = {
 			isa = PBXGroup;
 			children = (
+				6D7AC31A957EBB985493D7CA /* Info.plist */,
 				F87F35469AAE3E1577E2FCC3 /* LunaWidget.swift */,
 			);
 			path = LunaWidget;
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8DE666EAE46EF30FF549705D /* AddAnchorView.swift */,
+				60BA1B3232F7BF9EC4353017 /* AnchorDetailView.swift */,
 				B5F8CC77282981173696BF2A /* AnchorsView.swift */,
 				81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */,
 			);
@@ -288,6 +293,7 @@
 			files = (
 				ED11AC0A0EF338CD683C27D0 /* AddAnchorView.swift in Sources */,
 				4AA76F82EF66651F2495C0FD /* Anchor.swift in Sources */,
+				89A75A6F7361DABEC9F348E9 /* AnchorDetailView.swift in Sources */,
 				30C380DD2427CE1AA947127C /* AnchorsView.swift in Sources */,
 				5D8E325070CB083434E2974B /* JournalDetailView.swift in Sources */,
 				90FCF1F3995FF024F7360C05 /* JournalEntry.swift in Sources */,
@@ -387,16 +393,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7QS964CD3;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Luna Widget";
-				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LunaWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipesaldias.LunaWidgetExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipesaldias.Luna.LunaWidgetExtension;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -495,16 +500,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7QS964CD3;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Luna Widget";
-				INFOPLIST_KEY_NSExtension_NSExtensionPointIdentifier = "com.apple.widgetkit-extension";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LunaWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipesaldias.LunaWidgetExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipesaldias.Luna.LunaWidgetExtension;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

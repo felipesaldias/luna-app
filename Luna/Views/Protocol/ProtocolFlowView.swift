@@ -18,24 +18,13 @@ struct ProtocolFlowView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                // Progress
                 ProgressView(value: Double(step), total: 5)
                     .tint(.indigo)
                     .padding(.horizontal)
 
                 Spacer()
 
-                Group {
-                    switch step {
-                    case 0: pauseStep
-                    case 1: factStoryStep
-                    case 2: regulateStep
-                    case 3: evaluateStep
-                    case 4: decisionStep
-                    default: EmptyView()
-                    }
-                }
-                .padding(.horizontal, 24)
+                stepContent
 
                 Spacer()
             }
@@ -49,64 +38,117 @@ struct ProtocolFlowView: View {
         }
     }
 
-    // MARK: - Steps
-
-    private var pauseStep: some View {
-        PauseStepView {
-            step = 1
+    @ViewBuilder
+    private var stepContent: some View {
+        switch step {
+        case 0:
+            PauseStepView { step = 1 }
+        case 1:
+            FactStoryStep(
+                trigger: $trigger, emotion: $emotion, intensity: $intensity,
+                fact: $fact, story: $story, onNext: { step = 2 }
+            )
+        case 2:
+            RegulateStep(regulation: $regulation, onNext: { step = 3 })
+        case 3:
+            EvaluateStep(stillReal: $stillReal, onNext: { step = 4 })
+        case 4:
+            DecisionStep(
+                worthActing: $worthActing, actingFrom: $actingFrom,
+                onSave: { saveAndDismiss() }
+            )
+        default:
+            EmptyView()
         }
     }
 
-    private var factStoryStep: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "eye.fill")
-                .font(.system(size: 40))
-                .foregroundStyle(.indigo)
+    private func saveAndDismiss() {
+        let entry = JournalEntry(
+            trigger: trigger,
+            triggerDetail: "",
+            emotion: emotion,
+            intensity: intensity,
+            fact: fact,
+            story: story,
+            didAct: worthActing && actingFrom == "Claridad",
+            actedFrom: actingFrom.isEmpty ? nil : actingFrom,
+            fromProtocol: true
+        )
+        modelContext.insert(entry)
+        dismiss()
+    }
+}
 
-            Text("Hecho vs Historia")
-                .font(.title2)
-                .fontWeight(.semibold)
+// MARK: - Step 2: Fact vs Story
 
-            Text("Separa lo que paso de lo que interpretas")
-                .foregroundStyle(.secondary)
+private struct FactStoryStep: View {
+    @Binding var trigger: String
+    @Binding var emotion: String
+    @Binding var intensity: Int
+    @Binding var fact: String
+    @Binding var story: String
+    let onNext: () -> Void
 
-            Picker("Gatillo", selection: $trigger) {
-                Text("Selecciona...").tag("")
-                ForEach(TriggerType.allCases, id: \.rawValue) { t in
-                    Text(t.rawValue).tag(t.rawValue)
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 20) {
+                Image(systemName: "eye.fill")
+                    .font(.system(size: 40))
+                    .foregroundStyle(.indigo)
+
+                Text("Hecho vs Historia")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+
+                Text("Separa lo que paso de lo que interpretas")
+                    .foregroundStyle(.secondary)
+
+                Picker("Gatillo", selection: $trigger) {
+                    Text("Selecciona...").tag("")
+                    ForEach(TriggerType.allCases, id: \.rawValue) { t in
+                        Text(t.rawValue).tag(t.rawValue)
+                    }
                 }
-            }
 
-            Picker("Emocion", selection: $emotion) {
-                Text("Selecciona...").tag("")
-                ForEach(EmotionType.allCases, id: \.rawValue) { e in
-                    Text(e.rawValue).tag(e.rawValue)
+                Picker("Emocion", selection: $emotion) {
+                    Text("Selecciona...").tag("")
+                    ForEach(EmotionType.allCases, id: \.rawValue) { e in
+                        Text(e.rawValue).tag(e.rawValue)
+                    }
                 }
-            }
 
-            VStack(alignment: .leading) {
-                Text("Intensidad: \(intensity)")
-                    .font(.caption)
-                Slider(value: .init(get: { Double(intensity) }, set: { intensity = Int($0) }), in: 1...5, step: 1)
+                VStack(alignment: .leading) {
+                    Text("Intensidad: \(intensity)")
+                        .font(.caption)
+                    Slider(value: .init(get: { Double(intensity) }, set: { intensity = Int($0) }), in: 1...5, step: 1)
+                        .tint(.indigo)
+                }
+
+                TextField("Que paso realmente? (el hecho)", text: $fact, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+                    .lineLimit(3...5)
+
+                TextField("Que estoy interpretando? (la historia)", text: $story, axis: .vertical)
+                    .textFieldStyle(.roundedBorder)
+                    .lineLimit(3...5)
+
+                Button("Siguiente") { onNext() }
+                    .buttonStyle(.borderedProminent)
                     .tint(.indigo)
+                    .disabled(fact.isEmpty || story.isEmpty)
             }
-
-            TextField("Que paso realmente? (el hecho)", text: $fact, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .lineLimit(3...5)
-
-            TextField("Que estoy interpretando? (la historia)", text: $story, axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .lineLimit(3...5)
-
-            Button("Siguiente") { step = 2 }
-                .buttonStyle(.borderedProminent)
-                .tint(.indigo)
-                .disabled(fact.isEmpty || story.isEmpty)
+            .padding(.horizontal, 24)
         }
     }
+}
 
-    private var regulateStep: some View {
+// MARK: - Step 3: Regulate
+
+private struct RegulateStep: View {
+    @Binding var regulation: String
+    let onNext: () -> Void
+
+    var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "figure.walk")
                 .font(.system(size: 40))
@@ -145,14 +187,22 @@ struct ProtocolFlowView: View {
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
 
-            Button("Ya me regule, siguiente") { step = 3 }
+            Button("Ya me regule, siguiente") { onNext() }
                 .buttonStyle(.borderedProminent)
                 .tint(.indigo)
                 .disabled(regulation.isEmpty)
         }
+        .padding(.horizontal, 24)
     }
+}
 
-    private var evaluateStep: some View {
+// MARK: - Step 4: Evaluate
+
+private struct EvaluateStep: View {
+    @Binding var stillReal: String
+    let onNext: () -> Void
+
+    var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "brain.head.profile")
                 .font(.system(size: 40))
@@ -183,14 +233,23 @@ struct ProtocolFlowView: View {
                 }
             }
 
-            Button("Siguiente") { step = 4 }
+            Button("Siguiente") { onNext() }
                 .buttonStyle(.borderedProminent)
                 .tint(.indigo)
                 .disabled(stillReal.isEmpty)
         }
+        .padding(.horizontal, 24)
     }
+}
 
-    private var decisionStep: some View {
+// MARK: - Step 5: Decision
+
+private struct DecisionStep: View {
+    @Binding var worthActing: Bool
+    @Binding var actingFrom: String
+    let onSave: () -> Void
+
+    var body: some View {
         VStack(spacing: 20) {
             Image(systemName: "checkmark.shield.fill")
                 .font(.system(size: 40))
@@ -206,7 +265,7 @@ struct ProtocolFlowView: View {
             HStack(spacing: 16) {
                 Button("No") {
                     worthActing = false
-                    saveAndDismiss()
+                    onSave()
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.green)
@@ -219,55 +278,38 @@ struct ProtocolFlowView: View {
             }
 
             if worthActing {
-                Text("Desde que energia lo harias?")
-                    .font(.headline)
+                actingFromSection
+            }
+        }
+        .padding(.horizontal, 24)
+    }
 
-                HStack(spacing: 16) {
-                    Button("Miedo") {
-                        actingFrom = "Miedo"
-                    }
+    private var actingFromSection: some View {
+        VStack(spacing: 16) {
+            Text("Desde que energia lo harias?")
+                .font(.headline)
+
+            HStack(spacing: 16) {
+                Button("Miedo") { actingFrom = "Miedo" }
                     .buttonStyle(.borderedProminent)
                     .tint(actingFrom == "Miedo" ? .red : .gray)
 
-                    Button("Claridad") {
-                        actingFrom = "Claridad"
-                    }
+                Button("Claridad") { actingFrom = "Claridad" }
                     .buttonStyle(.borderedProminent)
                     .tint(actingFrom == "Claridad" ? .green : .gray)
-                }
+            }
 
-                if actingFrom == "Miedo" {
-                    Text("Si es desde el miedo, mejor no actues.\nEspera a tener claridad.")
-                        .foregroundStyle(.red)
-                        .multilineTextAlignment(.center)
-                }
+            if actingFrom == "Miedo" {
+                Text("Si es desde el miedo, mejor no actues.\nEspera a tener claridad.")
+                    .foregroundStyle(.red)
+                    .multilineTextAlignment(.center)
+            }
 
-                if !actingFrom.isEmpty {
-                    Button("Guardar y terminar") {
-                        saveAndDismiss()
-                    }
+            if !actingFrom.isEmpty {
+                Button("Guardar y terminar") { onSave() }
                     .buttonStyle(.borderedProminent)
                     .tint(.indigo)
-                }
             }
         }
-    }
-
-    private func saveAndDismiss() {
-        let entry = JournalEntry(
-            trigger: trigger,
-            triggerDetail: "",
-            emotion: emotion,
-            intensity: intensity,
-            fact: fact,
-            story: story,
-            didAct: worthActing && actingFrom == "Claridad",
-            actedFrom: actingFrom.isEmpty ? nil : actingFrom,
-            outcome: nil,
-            lesson: nil,
-            fromProtocol: true
-        )
-        modelContext.insert(entry)
-        dismiss()
     }
 }
