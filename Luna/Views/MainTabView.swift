@@ -23,7 +23,11 @@ struct MainTabView: View {
                 PromisesView()
             }
 
-            Tab("Anclas", systemImage: "moon.fill", value: 4) {
+            Tab("Recuerdos", systemImage: "photo.fill", value: 4) {
+                MemoriesView()
+            }
+
+            Tab("Anclas", systemImage: "moon.fill", value: 5) {
                 AnchorsView(deepLinkAnchor: $deepLinkAnchor)
             }
         }
@@ -31,7 +35,7 @@ struct MainTabView: View {
         .tabBarMinimizeBehavior(.onScrollDown)
         .onChange(of: deepLinkAnchor) { _, newValue in
             if newValue != nil {
-                selectedTab = 4
+                selectedTab = 5
             }
         }
     }
