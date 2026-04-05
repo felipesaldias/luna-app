@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct ProtocolView: View {
+    @Binding var showProtocol: Bool
     @State private var isActive = false
 
     var body: some View {
@@ -43,6 +44,12 @@ struct ProtocolView: View {
             .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $isActive) {
                 ProtocolFlowView()
+            }
+            .onChange(of: showProtocol) { _, newValue in
+                if newValue {
+                    isActive = true
+                    showProtocol = false
+                }
             }
         }
     }

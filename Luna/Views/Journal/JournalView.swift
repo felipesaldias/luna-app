@@ -23,14 +23,14 @@ struct JournalView: View {
             .navigationBarTitleDisplayMode(.inline)
             .contentMargins(.bottom, 80, for: .scrollContent)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button { showForm = true } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-                ToolbarItem(placement: .secondaryAction) {
-                    Button { showStats = true } label: {
-                        Image(systemName: "chart.bar")
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 16) {
+                        Button { showStats = true } label: {
+                            Image(systemName: "chart.bar.fill")
+                        }
+                        Button { showForm = true } label: {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
             }

@@ -26,14 +26,14 @@ struct AnchorsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .contentMargins(.bottom, 80, for: .scrollContent)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button { showAddSheet = true } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-                ToolbarItem(placement: .secondaryAction) {
-                    Button { showNotificationSettings = true } label: {
-                        Image(systemName: "bell")
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 16) {
+                        Button { showNotificationSettings = true } label: {
+                            Image(systemName: "bell.fill")
+                        }
+                        Button { showAddSheet = true } label: {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
             }
