@@ -65,13 +65,8 @@ class Anchor {
         Anchor(text: "Aceptar el dolor sin maquillarlo", category: "La Luna", linkedProcess: "luna", isDefault: true),
         Anchor(text: "No todo lo que sientes es verdad, pero lo tratas como si lo fuera", category: "La Luna", linkedProcess: "luna", isDefault: true),
 
-        // Mensajes
-        Anchor(text: "Un mensaje. No dos, no cinco. Uno.", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
-        Anchor(text: "Si no responde, no mandes otro", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
-        Anchor(text: "Estoy mandando esto por ella o por mi ansiedad?", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
-        Anchor(text: "El silencio comunica mas que 20 mensajes", category: "Mensajes", linkedProcess: "mensajes", isDefault: true),
-        Anchor(text: "Los cambios se demuestran, no se prometen por WhatsApp", category: "Mensajes", linkedProcess: "errores", isDefault: true),
-        Anchor(text: "Tu ansiedad no es su responsabilidad", category: "Mensajes", linkedProcess: "errores", isDefault: true),
-        Anchor(text: "Escuchala. No la interpretes. Escuchala.", category: "Mensajes", linkedProcess: "errores", isDefault: true),
+        Anchor(text: "Los cambios se demuestran, no se prometen", category: "Crecimiento", linkedProcess: "errores", isDefault: true),
+        Anchor(text: "Tu ansiedad no es su responsabilidad", category: "Crecimiento", linkedProcess: "errores", isDefault: true),
+        Anchor(text: "Escuchala. No la interpretes. Escuchala.", category: "Relacion", linkedProcess: "errores", isDefault: true),
     ]
 }

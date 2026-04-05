@@ -18,13 +18,6 @@ class Promise {
     }
 
     static let defaults: [Promise] = [
-        // Errores que no voy a repetir
-        Promise(text: "No mandar multiples mensajes seguidos sin respuesta", category: "Mensajes", isDefault: true),
-        Promise(text: "No editar ni borrar mensajes por ansiedad", category: "Mensajes", isDefault: true),
-        Promise(text: "No pedir juntarse mas de una vez si dijo que no", category: "Mensajes", isDefault: true),
-        Promise(text: "No subir la intensidad emocional con cada mensaje", category: "Mensajes", isDefault: true),
-        Promise(text: "No mandar fotos o cosas buscando reaccion emocional", category: "Mensajes", isDefault: true),
-
         Promise(text: "No cuestionar sus amistades ni salidas", category: "Relacion", isDefault: true),
         Promise(text: "No preguntar si la han joteado", category: "Relacion", isDefault: true),
         Promise(text: "No hacer comentarios sobre su independencia", category: "Relacion", isDefault: true),

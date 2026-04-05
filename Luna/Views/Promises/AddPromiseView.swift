@@ -7,7 +7,7 @@ struct AddPromiseView: View {
     @State private var text = ""
     @State private var category = "Cambios"
 
-    let categories = ["Mensajes", "Relacion", "Mi cabeza", "Cambios"]
+    let categories = ["Relacion", "Mi cabeza", "Cambios"]
 
     var body: some View {
         NavigationStack {
