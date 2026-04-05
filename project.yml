@@ -1,0 +1,23 @@
+name: Luna
+options:
+  bundleIdPrefix: com.felipesaldias
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "16.0"
+
+targets:
+  Luna:
+    type: application
+    platform: iOS
+    sources:
+      - Luna
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: "YES"
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        INFOPLIST_KEY_UILaunchScreen_Generation: "YES"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        SWIFT_EMIT_LOC_STRINGS: "YES"

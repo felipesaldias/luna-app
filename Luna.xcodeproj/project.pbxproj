@@ -1,0 +1,440 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		12CACAAA869D619DE8123742 /* ProcessDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78532438EBD48621D46FCE9B /* ProcessDetailView.swift */; };
+		1CF22825DC0FBBD4712FDAE7 /* JournalStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */; };
+		207E882E55AEDE3717D6329A /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288CE0B12948932F089CBF3 /* JournalView.swift */; };
+		21934AE497F6F9A9024DFE86 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */; };
+		30C380DD2427CE1AA947127C /* AnchorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8CC77282981173696BF2A /* AnchorsView.swift */; };
+		330DB89789A348EB9A49CB43 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC86EA87202FBFC3FB8012 /* ProcessView.swift */; };
+		4AA76F82EF66651F2495C0FD /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D99E2329BE538A466E6BEC /* Anchor.swift */; };
+		5024609EE38307661CBC945C /* LunaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446892BB5B365737EE00315F /* LunaApp.swift */; };
+		5D8E325070CB083434E2974B /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */; };
+		6BCBF7E7B5E8BBBF7E73E078 /* ProtocolFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2F6B63782B6670C851A5F0 /* ProtocolFlowView.swift */; };
+		796CA3FA39E693DB01A2C332 /* PauseStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE610EAB9D32022AB6C95E8 /* PauseStepView.swift */; };
+		88C774EF70A57CE584807236 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9F5B503C88F3E763439554 /* MainTabView.swift */; };
+		89FA3BF00525FB453E937E98 /* ProcessContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D5E7105CF257C2D413DB8E /* ProcessContent.swift */; };
+		90FCF1F3995FF024F7360C05 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3459219B4B7F136AA46F48A /* JournalEntry.swift */; };
+		BDDB176B85DE0E4C851FE5D6 /* JournalFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B1FBB8D4214ED58996DE3 /* JournalFormView.swift */; };
+		E26407FFBB903ABEB8F44CFD /* ProtocolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5968230E498B7AF66A5CA7A /* ProtocolView.swift */; };
+		ED11AC0A0EF338CD683C27D0 /* AddAnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE666EAE46EF30FF549705D /* AddAnchorView.swift */; };
+		FF8C1079AA50B6511BC84EF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 090F46C385278EFF03C80323 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		090F46C385278EFF03C80323 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D2F6B63782B6670C851A5F0 /* ProtocolFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolFlowView.swift; sourceTree = "<group>"; };
+		12D5E7105CF257C2D413DB8E /* ProcessContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessContent.swift; sourceTree = "<group>"; };
+		275B1FBB8D4214ED58996DE3 /* JournalFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalFormView.swift; sourceTree = "<group>"; };
+		446892BB5B365737EE00315F /* LunaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaApp.swift; sourceTree = "<group>"; };
+		455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
+		56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalStatsView.swift; sourceTree = "<group>"; };
+		78532438EBD48621D46FCE9B /* ProcessDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessDetailView.swift; sourceTree = "<group>"; };
+		81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		8DE666EAE46EF30FF549705D /* AddAnchorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnchorView.swift; sourceTree = "<group>"; };
+		A4D99E2329BE538A466E6BEC /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
+		A5968230E498B7AF66A5CA7A /* ProtocolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolView.swift; sourceTree = "<group>"; };
+		B5F8CC77282981173696BF2A /* AnchorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorsView.swift; sourceTree = "<group>"; };
+		C3459219B4B7F136AA46F48A /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		D288CE0B12948932F089CBF3 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		D399E4DA6B951325F78CD25C /* Luna.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA9F5B503C88F3E763439554 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		EFE610EAB9D32022AB6C95E8 /* PauseStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseStepView.swift; sourceTree = "<group>"; };
+		F4BC86EA87202FBFC3FB8012 /* ProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0E258EAC185F83A209546F0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D399E4DA6B951325F78CD25C /* Luna.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		268AA46C1C2FE3CD406A5C5D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EFE610EAB9D32022AB6C95E8 /* PauseStepView.swift */,
+				0D2F6B63782B6670C851A5F0 /* ProtocolFlowView.swift */,
+				A5968230E498B7AF66A5CA7A /* ProtocolView.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		3B27887B5DC4CF7093A67CA8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				446892BB5B365737EE00315F /* LunaApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		74CD1154D48489D7D14EE5C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4D99E2329BE538A466E6BEC /* Anchor.swift */,
+				C3459219B4B7F136AA46F48A /* JournalEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		915108D8DAD00D8BD96D13E7 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				12D5E7105CF257C2D413DB8E /* ProcessContent.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		BCE224A24DD6FDE472019650 = {
+			isa = PBXGroup;
+			children = (
+				CD6164EF533913AF3497943F /* Luna */,
+				0E258EAC185F83A209546F0A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C3052A16DDF8C6F8D0D7AF19 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */,
+				275B1FBB8D4214ED58996DE3 /* JournalFormView.swift */,
+				56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */,
+				D288CE0B12948932F089CBF3 /* JournalView.swift */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
+		C7505A6E7DEC2D6DE9ED0774 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA9F5B503C88F3E763439554 /* MainTabView.swift */,
+				D96E94C62FA1410B824272BC /* Anchors */,
+				C3052A16DDF8C6F8D0D7AF19 /* Journal */,
+				F33F606D8EC8D7A439876503 /* Process */,
+				268AA46C1C2FE3CD406A5C5D /* Protocol */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD6164EF533913AF3497943F /* Luna */ = {
+			isa = PBXGroup;
+			children = (
+				090F46C385278EFF03C80323 /* Assets.xcassets */,
+				3B27887B5DC4CF7093A67CA8 /* App */,
+				915108D8DAD00D8BD96D13E7 /* Content */,
+				74CD1154D48489D7D14EE5C1 /* Models */,
+				C7505A6E7DEC2D6DE9ED0774 /* Views */,
+			);
+			path = Luna;
+			sourceTree = "<group>";
+		};
+		D96E94C62FA1410B824272BC /* Anchors */ = {
+			isa = PBXGroup;
+			children = (
+				8DE666EAE46EF30FF549705D /* AddAnchorView.swift */,
+				B5F8CC77282981173696BF2A /* AnchorsView.swift */,
+				81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */,
+			);
+			path = Anchors;
+			sourceTree = "<group>";
+		};
+		F33F606D8EC8D7A439876503 /* Process */ = {
+			isa = PBXGroup;
+			children = (
+				78532438EBD48621D46FCE9B /* ProcessDetailView.swift */,
+				F4BC86EA87202FBFC3FB8012 /* ProcessView.swift */,
+			);
+			path = Process;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDEBD772AE9343A01D9935A3 /* Luna */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 402FB2144CA133517A0F616E /* Build configuration list for PBXNativeTarget "Luna" */;
+			buildPhases = (
+				52D303B0782F30C5862FA0FC /* Sources */,
+				D18FBD20BFCC381C6C6B544C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Luna;
+			packageProductDependencies = (
+			);
+			productName = Luna;
+			productReference = D399E4DA6B951325F78CD25C /* Luna.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17A65B085E12EE34B8A63E88 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					EDEBD772AE9343A01D9935A3 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9C7285D4C14B8A8DF926CBB7 /* Build configuration list for PBXProject "Luna" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = BCE224A24DD6FDE472019650;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0E258EAC185F83A209546F0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDEBD772AE9343A01D9935A3 /* Luna */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D18FBD20BFCC381C6C6B544C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF8C1079AA50B6511BC84EF8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52D303B0782F30C5862FA0FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED11AC0A0EF338CD683C27D0 /* AddAnchorView.swift in Sources */,
+				4AA76F82EF66651F2495C0FD /* Anchor.swift in Sources */,
+				30C380DD2427CE1AA947127C /* AnchorsView.swift in Sources */,
+				5D8E325070CB083434E2974B /* JournalDetailView.swift in Sources */,
+				90FCF1F3995FF024F7360C05 /* JournalEntry.swift in Sources */,
+				BDDB176B85DE0E4C851FE5D6 /* JournalFormView.swift in Sources */,
+				1CF22825DC0FBBD4712FDAE7 /* JournalStatsView.swift in Sources */,
+				207E882E55AEDE3717D6329A /* JournalView.swift in Sources */,
+				5024609EE38307661CBC945C /* LunaApp.swift in Sources */,
+				88C774EF70A57CE584807236 /* MainTabView.swift in Sources */,
+				21934AE497F6F9A9024DFE86 /* NotificationSettingsView.swift in Sources */,
+				796CA3FA39E693DB01A2C332 /* PauseStepView.swift in Sources */,
+				89FA3BF00525FB453E937E98 /* ProcessContent.swift in Sources */,
+				12CACAAA869D619DE8123742 /* ProcessDetailView.swift in Sources */,
+				330DB89789A348EB9A49CB43 /* ProcessView.swift in Sources */,
+				6BCBF7E7B5E8BBBF7E73E078 /* ProtocolFlowView.swift in Sources */,
+				E26407FFBB903ABEB8F44CFD /* ProtocolView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1969CB8D53AF6852AF716F72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		84D2771497886F76A490F2BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipesaldias.Luna;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A656E583166AE2A51EF0E151 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E4B091AB0A6F3EA401007C21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipesaldias.Luna;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		402FB2144CA133517A0F616E /* Build configuration list for PBXNativeTarget "Luna" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84D2771497886F76A490F2BD /* Debug */,
+				E4B091AB0A6F3EA401007C21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9C7285D4C14B8A8DF926CBB7 /* Build configuration list for PBXProject "Luna" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A656E583166AE2A51EF0E151 /* Debug */,
+				1969CB8D53AF6852AF716F72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17A65B085E12EE34B8A63E88 /* Project object */;
+}
