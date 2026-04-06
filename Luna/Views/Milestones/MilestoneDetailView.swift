@@ -1,11 +1,15 @@
 import SwiftUI
 import SwiftData
+import PhotosUI
+import AVFoundation
 
 struct MilestoneDetailView: View {
     @Bindable var milestone: Milestone
     @Query private var allMemories: [Memory]
+    @Environment(\.modelContext) private var modelContext
     @State private var isEditing = false
     @State private var selectedMemory: Memory?
+    @State private var selectedPhotoItem: [PhotosPickerItem] = []
 
     private var linkedMemories: [Memory] {
         let id = milestone.persistentModelID.hashValue.description
@@ -65,8 +69,11 @@ struct MilestoneDetailView: View {
             }
         }
 
-        if !linkedMemories.isEmpty {
-            Section("Fotos y videos") {
+        Section("Fotos y videos") {
+            if linkedMemories.isEmpty {
+                Text("Sin fotos aun")
+                    .foregroundStyle(.tertiary)
+            } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
                         ForEach(linkedMemories) { memory in
@@ -95,6 +102,16 @@ struct MilestoneDetailView: View {
                 }
                 .listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
             }
+
+            PhotosPicker(selection: $selectedPhotoItem, maxSelectionCount: 1, matching: .any(of: [.images, .videos])) {
+                Label("Agregar foto o video", systemImage: "plus.circle")
+                    .foregroundStyle(.indigo)
+            }
+            .onChange(of: selectedPhotoItem) { _, items in
+                guard let item = items.first else { return }
+                Task { await addMedia(from: item) }
+                selectedPhotoItem = []
+            }
         }
     }
 
@@ -107,6 +124,33 @@ struct MilestoneDetailView: View {
             DatePicker("Fecha", selection: $milestone.date, displayedComponents: .date)
 
             IconPickerGrid(selected: $milestone.icon)
+        }
+    }
+
+    private func addMedia(from item: PhotosPickerItem) async {
+        let milestoneIdStr = milestone.persistentModelID.hashValue.description
+
+        // Try video
+        if let videoData = try? await item.loadTransferable(type: VideoTransferable.self) {
+            var thumbnail: Data?
+            let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("temp_vid.mov")
+            try? videoData.data.write(to: tempURL)
+            let asset = AVAsset(url: tempURL)
+            let gen = AVAssetImageGenerator(asset: asset)
+            gen.appliesPreferredTrackTransform = true
+            gen.maximumSize = CGSize(width: 400, height: 400)
+            if let cgImage = try? await gen.image(at: .zero).image {
+                thumbnail = UIImage(cgImage: cgImage).jpegData(compressionQuality: 0.7)
+            }
+            let memory = Memory(imageData: thumbnail, videoData: videoData.data, isVideo: true, milestoneId: milestoneIdStr)
+            modelContext.insert(memory)
+            return
+        }
+
+        // Image
+        if let data = try? await item.loadTransferable(type: Data.self) {
+            let memory = Memory(imageData: data, milestoneId: milestoneIdStr)
+            modelContext.insert(memory)
         }
     }
 
