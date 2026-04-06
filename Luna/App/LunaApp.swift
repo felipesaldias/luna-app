@@ -19,6 +19,9 @@ struct LunaApp: App {
                     }
                 }
         }
+        // IMPORTANT: When adding new fields to any model, ALWAYS use optional or default values
+        // e.g. var newField: String = "" or var newField: String?
+        // Otherwise SwiftData migration fails and data is lost
         .modelContainer(for: [JournalEntry.self, Anchor.self, Promise.self, Memory.self, Milestone.self])
     }
 }
