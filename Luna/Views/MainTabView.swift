@@ -34,6 +34,10 @@ struct MainTabView: View {
             Tab("Anclas", systemImage: "moon.fill", value: 6) {
                 AnchorsView(deepLinkAnchor: $deepLinkAnchor)
             }
+
+            Tab("Ajustes", systemImage: "gear", value: 7) {
+                BackupView()
+            }
         }
         .tint(.indigo)
         .tabBarMinimizeBehavior(.onScrollDown)
