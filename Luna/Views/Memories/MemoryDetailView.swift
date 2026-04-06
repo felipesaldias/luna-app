@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import AVKit
 
 struct MemoryDetailView: View {
     @Bindable var memory: Memory
@@ -23,7 +24,6 @@ struct MemoryDetailView: View {
             .tabViewStyle(.page(indexDisplayMode: .automatic))
             .ignoresSafeArea()
 
-            // Controls
             VStack {
                 HStack {
                     Button { dismiss() } label: {
@@ -52,13 +52,11 @@ struct MemoryDetailView: View {
                 currentIndex = idx
             }
         }
-        .alert("Eliminar foto?", isPresented: $showDeleteConfirm) {
+        .alert("Eliminar?", isPresented: $showDeleteConfirm) {
             Button("Eliminar", role: .destructive) {
                 let mem = allMemories[currentIndex]
                 modelContext.delete(mem)
-                if allMemories.count <= 1 {
-                    dismiss()
-                }
+                if allMemories.count <= 1 { dismiss() }
             }
             Button("Cancelar", role: .cancel) {}
         }
@@ -72,12 +70,16 @@ struct MemoryDetailView: View {
 
 private struct MemoryPage: View {
     let memory: Memory
+    @State private var player: AVPlayer?
 
     var body: some View {
         VStack {
             Spacer()
 
-            if let data = memory.imageData, let uiImage = UIImage(data: data) {
+            if memory.isVideo, let videoData = memory.videoData {
+                VideoPlayerView(videoData: videoData)
+                    .frame(maxHeight: UIScreen.main.bounds.height * 0.6)
+            } else if let data = memory.imageData, let uiImage = UIImage(data: data) {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
@@ -85,7 +87,6 @@ private struct MemoryPage: View {
 
             Spacer()
 
-            // Caption and place overlay
             if !memory.caption.isEmpty || !memory.place.isEmpty {
                 VStack(spacing: 6) {
                     if !memory.caption.isEmpty {
@@ -111,6 +112,30 @@ private struct MemoryPage: View {
                 .padding(.bottom, 40)
             }
         }
+    }
+}
+
+private struct VideoPlayerView: View {
+    let videoData: Data
+    @State private var player: AVPlayer?
+
+    var body: some View {
+        Group {
+            if let player {
+                VideoPlayer(player: player)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            } else {
+                ProgressView()
+            }
+        }
+        .onAppear { setupPlayer() }
+        .onDisappear { player?.pause() }
+    }
+
+    private func setupPlayer() {
+        let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".mov")
+        try? videoData.write(to: tempURL)
+        player = AVPlayer(url: tempURL)
     }
 }
 
