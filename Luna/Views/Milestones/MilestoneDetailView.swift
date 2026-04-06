@@ -106,20 +106,7 @@ struct MilestoneDetailView: View {
                 .lineLimit(2...6)
             DatePicker("Fecha", selection: $milestone.date, displayedComponents: .date)
 
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
-                ForEach(milestoneIcons, id: \.self) { icon in
-                    Button {
-                        milestone.icon = icon
-                    } label: {
-                        Image(systemName: icon)
-                            .font(.title3)
-                            .frame(width: 36, height: 36)
-                            .background(milestone.icon == icon ? Color.indigo.opacity(0.2) : Color.clear)
-                            .clipShape(Circle())
-                    }
-                    .foregroundStyle(milestone.icon == icon ? .indigo : .secondary)
-                }
-            }
+            IconPickerGrid(selected: $milestone.icon)
         }
     }
 

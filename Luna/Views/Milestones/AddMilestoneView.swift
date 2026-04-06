@@ -20,20 +20,7 @@ struct AddMilestoneView: View {
                 }
 
                 Section("Icono") {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 12) {
-                        ForEach(milestoneIcons, id: \.self) { icon in
-                            Button {
-                                selectedIcon = icon
-                            } label: {
-                                Image(systemName: icon)
-                                    .font(.title3)
-                                    .frame(width: 36, height: 36)
-                                    .background(selectedIcon == icon ? Color.indigo.opacity(0.2) : Color.clear)
-                                    .clipShape(Circle())
-                            }
-                            .foregroundStyle(selectedIcon == icon ? .indigo : .secondary)
-                        }
-                    }
+                    IconPickerGrid(selected: $selectedIcon)
                 }
             }
             .navigationTitle("Nuevo hito")

@@ -23,6 +23,7 @@
 		5024609EE38307661CBC945C /* LunaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446892BB5B365737EE00315F /* LunaApp.swift */; };
 		5D8E325070CB083434E2974B /* JournalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */; };
 		5FC53A446BBA6A5C4119F352 /* LunaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87F35469AAE3E1577E2FCC3 /* LunaWidget.swift */; };
+		6006E641DDDDB2EAF8EBE46E /* IconPickerGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431A5FC594529B171063FD8F /* IconPickerGrid.swift */; };
 		63CADD05AC037BEFD1C0435A /* AppGroupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39ECB2569545C7FAEABC8424 /* AppGroupConstants.swift */; };
 		6BCBF7E7B5E8BBBF7E73E078 /* ProtocolFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2F6B63782B6670C851A5F0 /* ProtocolFlowView.swift */; };
 		796CA3FA39E693DB01A2C332 /* PauseStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE610EAB9D32022AB6C95E8 /* PauseStepView.swift */; };
@@ -72,9 +73,10 @@
 		275B1FBB8D4214ED58996DE3 /* JournalFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalFormView.swift; sourceTree = "<group>"; };
 		33CCABA2227F3DF482B162DC /* AddMilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMilestoneView.swift; sourceTree = "<group>"; };
 		39ECB2569545C7FAEABC8424 /* AppGroupConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupConstants.swift; sourceTree = "<group>"; };
+		431A5FC594529B171063FD8F /* IconPickerGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerGrid.swift; sourceTree = "<group>"; };
 		446892BB5B365737EE00315F /* LunaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaApp.swift; sourceTree = "<group>"; };
 		455727C9F3EAF386B9C0FFFC /* JournalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalDetailView.swift; sourceTree = "<group>"; };
-		4B1EA9ECABFE3C9E46D55025 /* LunaWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LunaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B1EA9ECABFE3C9E46D55025 /* LunaWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LunaWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D8C9D9CECDD8B40F3EA0EB /* JournalStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalStatsView.swift; sourceTree = "<group>"; };
 		60BA1B3232F7BF9EC4353017 /* AnchorDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorDetailView.swift; sourceTree = "<group>"; };
 		669544C310BCAF5623B0AD07 /* MilestoneDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneDetailView.swift; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		BDB642AF741A3227EF8FA09E /* MemoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesView.swift; sourceTree = "<group>"; };
 		C3459219B4B7F136AA46F48A /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		D288CE0B12948932F089CBF3 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
-		D399E4DA6B951325F78CD25C /* Luna.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D399E4DA6B951325F78CD25C /* Luna.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Luna.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9F5B503C88F3E763439554 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		DE45A383A45A5AF4C2D4D7FF /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		E667F93B61401C090DC2D7C2 /* AddPromiseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPromiseView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				33CCABA2227F3DF482B162DC /* AddMilestoneView.swift */,
+				431A5FC594529B171063FD8F /* IconPickerGrid.swift */,
 				669544C310BCAF5623B0AD07 /* MilestoneDetailView.swift */,
 				F89921B2BDEA405132766B7B /* MilestonesView.swift */,
 			);
@@ -355,6 +358,7 @@
 				89A75A6F7361DABEC9F348E9 /* AnchorDetailView.swift in Sources */,
 				30C380DD2427CE1AA947127C /* AnchorsView.swift in Sources */,
 				63CADD05AC037BEFD1C0435A /* AppGroupConstants.swift in Sources */,
+				6006E641DDDDB2EAF8EBE46E /* IconPickerGrid.swift in Sources */,
 				5D8E325070CB083434E2974B /* JournalDetailView.swift in Sources */,
 				90FCF1F3995FF024F7360C05 /* JournalEntry.swift in Sources */,
 				BDDB176B85DE0E4C851FE5D6 /* JournalFormView.swift in Sources */,
@@ -460,7 +464,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C7QS964CD3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = LunaWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -482,7 +485,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C7QS964CD3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -567,7 +569,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C7QS964CD3;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = LunaWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -589,7 +590,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = C7QS964CD3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
