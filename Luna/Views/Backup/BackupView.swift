@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import UniformTypeIdentifiers
+import ZIPFoundation
 
 struct BackupView: View {
     @Query private var journals: [JournalEntry]
@@ -10,9 +11,10 @@ struct BackupView: View {
     @Query private var memories: [Memory]
     @State private var showExport = false
     @State private var showImport = false
-    @State private var exportData: Data?
+    @State private var exportURL: URL?
     @State private var status = ""
     @State private var showRestoreConfirm = false
+    @State private var isExporting = false
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
@@ -23,15 +25,24 @@ struct BackupView: View {
                     row("Anclas", "\(anchors.count)")
                     row("Promesas", "\(promises.count)")
                     row("Hitos", "\(milestones.count)")
-                    row("Recuerdos", "\(memories.count)")
+                    row("Recuerdos (fotos/videos)", "\(memories.count)")
                 }
 
                 Section("Respaldo") {
                     Button {
-                        exportBackup()
+                        Task { await exportBackup() }
                     } label: {
-                        Label("Exportar respaldo", systemImage: "square.and.arrow.up")
+                        if isExporting {
+                            HStack {
+                                ProgressView()
+                                    .padding(.trailing, 8)
+                                Text("Generando respaldo...")
+                            }
+                        } else {
+                            Label("Exportar respaldo completo (ZIP)", systemImage: "square.and.arrow.up")
+                        }
                     }
+                    .disabled(isExporting)
 
                     Button {
                         showRestoreConfirm = true
@@ -48,44 +59,34 @@ struct BackupView: View {
                 }
 
                 Section {
-                    Text("El respaldo incluye diario, anclas, promesas e hitos. Las fotos y videos no se incluyen por su tamaño.")
+                    Text("Incluye todo: diario, anclas, promesas, hitos, fotos y videos. Se exporta como ZIP.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("Respaldo")
             .navigationBarTitleDisplayMode(.inline)
-            .fileExporter(
-                isPresented: $showExport,
-                document: BackupDocument(data: exportData ?? Data()),
-                contentType: .json,
-                defaultFilename: "luna-backup-\(Date.now.formatted(.dateTime.year().month().day()))"
-            ) { result in
-                switch result {
-                case .success:
-                    status = "Respaldo exportado exitosamente"
-                case .failure(let error):
-                    status = "Error: \(error.localizedDescription)"
+            .sheet(isPresented: $showExport) {
+                if let url = exportURL {
+                    ShareSheet(url: url)
                 }
             }
             .fileImporter(
                 isPresented: $showImport,
-                allowedContentTypes: [.json]
+                allowedContentTypes: [.zip]
             ) { result in
                 switch result {
                 case .success(let url):
-                    importBackup(from: url)
+                    Task { await importBackup(from: url) }
                 case .failure(let error):
                     status = "Error: \(error.localizedDescription)"
                 }
             }
             .alert("Restaurar respaldo?", isPresented: $showRestoreConfirm) {
-                Button("Restaurar", role: .destructive) {
-                    showImport = true
-                }
+                Button("Restaurar", role: .destructive) { showImport = true }
                 Button("Cancelar", role: .cancel) {}
             } message: {
-                Text("Esto reemplazara los datos actuales con los del respaldo.")
+                Text("Esto agregara los datos del respaldo a los actuales.")
             }
         }
     }
@@ -94,72 +95,158 @@ struct BackupView: View {
         HStack {
             Text(label)
             Spacer()
-            Text(value)
-                .foregroundStyle(.secondary)
-                .monospacedDigit()
+            Text(value).foregroundStyle(.secondary).monospacedDigit()
         }
     }
 
-    private func exportBackup() {
-        let backup = BackupData(
-            journals: journals.map { JournalBackup(from: $0) },
-            anchors: anchors.filter { !$0.isDefault }.map { AnchorBackup(from: $0) },
-            promises: promises.filter { !$0.isDefault }.map { PromiseBackup(from: $0) },
-            milestones: milestones.map { MilestoneBackup(from: $0) },
-            exportDate: Date.now
-        )
+    // MARK: - Export
 
-        if let data = try? JSONEncoder().encode(backup) {
-            exportData = data
-            showExport = true
+    private func exportBackup() async {
+        isExporting = true
+        status = ""
+
+        let tempDir = FileManager.default.temporaryDirectory.appendingPathComponent("luna-backup-\(UUID().uuidString)")
+        let mediaDir = tempDir.appendingPathComponent("media")
+
+        do {
+            try FileManager.default.createDirectory(at: mediaDir, withIntermediateDirectories: true)
+
+            var memoryBackups: [MemoryBackup] = []
+            for (i, memory) in memories.enumerated() {
+                var imageFile: String?
+                var videoFile: String?
+
+                if let data = memory.imageData {
+                    let filename = "img_\(i).jpg"
+                    try data.write(to: mediaDir.appendingPathComponent(filename))
+                    imageFile = filename
+                }
+                if let data = memory.videoData {
+                    let filename = "vid_\(i).mov"
+                    try data.write(to: mediaDir.appendingPathComponent(filename))
+                    videoFile = filename
+                }
+
+                memoryBackups.append(MemoryBackup(
+                    imageFile: imageFile, videoFile: videoFile, isVideo: memory.isVideo,
+                    caption: memory.caption, place: memory.place,
+                    milestoneId: memory.milestoneId, createdAt: memory.createdAt
+                ))
+            }
+
+            let backup = BackupData(
+                journals: journals.map { JournalBackup(from: $0) },
+                anchors: anchors.filter { !$0.isDefault }.map { AnchorBackup(from: $0) },
+                promises: promises.filter { !$0.isDefault }.map { PromiseBackup(from: $0) },
+                milestones: milestones.map { MilestoneBackup(from: $0) },
+                memories: memoryBackups,
+                exportDate: Date.now
+            )
+
+            let jsonData = try JSONEncoder().encode(backup)
+            try jsonData.write(to: tempDir.appendingPathComponent("backup.json"))
+
+            let zipURL = FileManager.default.temporaryDirectory
+                .appendingPathComponent("Luna-Backup-\(Date.now.formatted(.dateTime.year().month().day())).zip")
+            try? FileManager.default.removeItem(at: zipURL)
+            try FileManager.default.zipItem(at: tempDir, to: zipURL)
+
+            try? FileManager.default.removeItem(at: tempDir)
+
+            await MainActor.run {
+                exportURL = zipURL
+                showExport = true
+                isExporting = false
+                status = "Respaldo generado"
+            }
+        } catch {
+            await MainActor.run {
+                status = "Error: \(error.localizedDescription)"
+                isExporting = false
+            }
         }
     }
 
-    private func importBackup(from url: URL) {
+    // MARK: - Import
+
+    private func importBackup(from url: URL) async {
         guard url.startAccessingSecurityScopedResource() else {
-            status = "Error: sin acceso al archivo"
+            await MainActor.run { status = "Error: sin acceso al archivo" }
             return
         }
         defer { url.stopAccessingSecurityScopedResource() }
 
-        guard let data = try? Data(contentsOf: url),
-              let backup = try? JSONDecoder().decode(BackupData.self, from: data) else {
-            status = "Error: archivo invalido"
-            return
-        }
+        let tempDir = FileManager.default.temporaryDirectory.appendingPathComponent("luna-restore-\(UUID().uuidString)")
 
-        // Restore journals
-        for j in backup.journals {
-            let entry = JournalEntry(
-                date: j.date, trigger: j.trigger, triggerDetail: j.triggerDetail,
-                emotion: j.emotion, intensity: j.intensity, fact: j.fact,
-                story: j.story, didAct: j.didAct, actedFrom: j.actedFrom,
-                outcome: j.outcome, lesson: j.lesson, fromProtocol: j.fromProtocol,
-                rawFeeling: j.rawFeeling
-            )
-            modelContext.insert(entry)
-        }
+        do {
+            try FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true)
+            try FileManager.default.unzipItem(at: url, to: tempDir)
 
-        // Restore custom anchors
-        for a in backup.anchors {
-            let anchor = Anchor(text: a.text, category: a.category, linkedProcess: a.linkedProcess)
-            modelContext.insert(anchor)
-        }
+            guard let jsonURL = findFile(named: "backup.json", in: tempDir) else {
+                await MainActor.run { status = "Error: backup.json no encontrado" }
+                return
+            }
 
-        // Restore custom promises
-        for p in backup.promises {
-            let promise = Promise(text: p.text, category: p.category, brokenCount: p.brokenCount)
-            modelContext.insert(promise)
-        }
+            let jsonData = try Data(contentsOf: jsonURL)
+            let backup = try JSONDecoder().decode(BackupData.self, from: jsonData)
+            let mediaDir = jsonURL.deletingLastPathComponent().appendingPathComponent("media")
 
-        // Restore milestones
-        for m in backup.milestones {
-            let milestone = Milestone(title: m.title, detail: m.detail, date: m.date, icon: m.icon)
-            modelContext.insert(milestone)
-        }
+            await MainActor.run {
+                for j in backup.journals {
+                    modelContext.insert(JournalEntry(
+                        date: j.date, trigger: j.trigger, triggerDetail: j.triggerDetail,
+                        emotion: j.emotion, intensity: j.intensity, fact: j.fact,
+                        story: j.story, didAct: j.didAct, actedFrom: j.actedFrom,
+                        outcome: j.outcome, lesson: j.lesson, fromProtocol: j.fromProtocol,
+                        rawFeeling: j.rawFeeling
+                    ))
+                }
+                for a in backup.anchors {
+                    modelContext.insert(Anchor(text: a.text, category: a.category, linkedProcess: a.linkedProcess))
+                }
+                for p in backup.promises {
+                    modelContext.insert(Promise(text: p.text, category: p.category, brokenCount: p.brokenCount))
+                }
+                for m in backup.milestones {
+                    modelContext.insert(Milestone(title: m.title, detail: m.detail, date: m.date, icon: m.icon))
+                }
+                for m in backup.memories {
+                    var imageData: Data?
+                    var videoData: Data?
+                    if let f = m.imageFile { imageData = try? Data(contentsOf: mediaDir.appendingPathComponent(f)) }
+                    if let f = m.videoFile { videoData = try? Data(contentsOf: mediaDir.appendingPathComponent(f)) }
+                    modelContext.insert(Memory(
+                        imageData: imageData, videoData: videoData, isVideo: m.isVideo,
+                        caption: m.caption, place: m.place, milestoneId: m.milestoneId
+                    ))
+                }
 
-        status = "Respaldo restaurado: \(backup.journals.count) entradas, \(backup.milestones.count) hitos"
+                status = "Restaurado: \(backup.journals.count) entradas, \(backup.milestones.count) hitos, \(backup.memories.count) recuerdos"
+            }
+
+            try? FileManager.default.removeItem(at: tempDir)
+        } catch {
+            await MainActor.run { status = "Error: \(error.localizedDescription)" }
+        }
     }
+
+    private func findFile(named name: String, in directory: URL) -> URL? {
+        let enumerator = FileManager.default.enumerator(at: directory, includingPropertiesForKeys: nil)
+        while let fileURL = enumerator?.nextObject() as? URL {
+            if fileURL.lastPathComponent == name { return fileURL }
+        }
+        return nil
+    }
+}
+
+// MARK: - Share Sheet
+
+struct ShareSheet: UIViewControllerRepresentable {
+    let url: URL
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: [url], applicationActivities: nil)
+    }
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // MARK: - Backup models
@@ -169,77 +256,51 @@ struct BackupData: Codable {
     let anchors: [AnchorBackup]
     let promises: [PromiseBackup]
     let milestones: [MilestoneBackup]
+    let memories: [MemoryBackup]
     let exportDate: Date
 }
 
 struct JournalBackup: Codable {
     let date: Date
-    let trigger: String
-    let triggerDetail: String
-    let emotion: String
+    let trigger, triggerDetail, emotion: String
     let intensity: Int
-    let fact: String
-    let story: String
+    let fact, story: String
     let didAct: Bool
-    let actedFrom: String?
-    let outcome: String?
-    let lesson: String?
+    let actedFrom, outcome, lesson: String?
     let fromProtocol: Bool
     let rawFeeling: String?
-
-    init(from entry: JournalEntry) {
-        date = entry.date; trigger = entry.trigger; triggerDetail = entry.triggerDetail
-        emotion = entry.emotion; intensity = entry.intensity; fact = entry.fact
-        story = entry.story; didAct = entry.didAct; actedFrom = entry.actedFrom
-        outcome = entry.outcome; lesson = entry.lesson; fromProtocol = entry.fromProtocol
-        rawFeeling = entry.rawFeeling
+    init(from e: JournalEntry) {
+        date = e.date; trigger = e.trigger; triggerDetail = e.triggerDetail
+        emotion = e.emotion; intensity = e.intensity; fact = e.fact
+        story = e.story; didAct = e.didAct; actedFrom = e.actedFrom
+        outcome = e.outcome; lesson = e.lesson; fromProtocol = e.fromProtocol
+        rawFeeling = e.rawFeeling
     }
 }
 
 struct AnchorBackup: Codable {
-    let text: String
-    let category: String
+    let text, category: String
     let linkedProcess: String?
-
-    init(from anchor: Anchor) {
-        text = anchor.text; category = anchor.category; linkedProcess = anchor.linkedProcess
-    }
+    init(from a: Anchor) { text = a.text; category = a.category; linkedProcess = a.linkedProcess }
 }
 
 struct PromiseBackup: Codable {
-    let text: String
-    let category: String
+    let text, category: String
     let brokenCount: Int
-
-    init(from promise: Promise) {
-        text = promise.text; category = promise.category; brokenCount = promise.brokenCount
-    }
+    init(from p: Promise) { text = p.text; category = p.category; brokenCount = p.brokenCount }
 }
 
 struct MilestoneBackup: Codable {
-    let title: String
-    let detail: String
+    let title, detail: String
     let date: Date
     let icon: String
-
-    init(from milestone: Milestone) {
-        title = milestone.title; detail = milestone.detail; date = milestone.date; icon = milestone.icon
-    }
+    init(from m: Milestone) { title = m.title; detail = m.detail; date = m.date; icon = m.icon }
 }
 
-// MARK: - File document
-
-struct BackupDocument: FileDocument {
-    static var readableContentTypes: [UTType] { [.json] }
-    let data: Data
-
-    init(data: Data) { self.data = data }
-
-    init(configuration: ReadConfiguration) throws {
-        data = configuration.file.regularFileContents ?? Data()
-    }
-
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        FileWrapper(regularFileWithContents: data)
-    }
+struct MemoryBackup: Codable {
+    let imageFile, videoFile: String?
+    let isVideo: Bool
+    let caption, place: String
+    let milestoneId: String?
+    let createdAt: Date
 }

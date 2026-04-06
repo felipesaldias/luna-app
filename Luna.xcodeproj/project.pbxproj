@@ -16,6 +16,7 @@
 		207E882E55AEDE3717D6329A /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D288CE0B12948932F089CBF3 /* JournalView.swift */; };
 		216E1F958DD9EF4643A54CD2 /* AddMilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CCABA2227F3DF482B162DC /* AddMilestoneView.swift */; };
 		21934AE497F6F9A9024DFE86 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D34569411A65D059BB86D2 /* NotificationSettingsView.swift */; };
+		2FD3D00D0BE5713FE25A5594 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 743D52465C89A089CFE78C19 /* ZIPFoundation */; };
 		30C380DD2427CE1AA947127C /* AnchorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F8CC77282981173696BF2A /* AnchorsView.swift */; };
 		330DB89789A348EB9A49CB43 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC86EA87202FBFC3FB8012 /* ProcessView.swift */; };
 		47EFF46CEAEC55FF35B533D2 /* MilestoneDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669544C310BCAF5623B0AD07 /* MilestoneDetailView.swift */; };
@@ -105,6 +106,17 @@
 		F87F35469AAE3E1577E2FCC3 /* LunaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunaWidget.swift; sourceTree = "<group>"; };
 		F89921B2BDEA405132766B7B /* MilestonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10B8E8A0858A53041D4D9C80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FD3D00D0BE5713FE25A5594 /* ZIPFoundation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0E258EAC185F83A209546F0A /* Products */ = {
@@ -295,6 +307,7 @@
 			buildPhases = (
 				52D303B0782F30C5862FA0FC /* Sources */,
 				D18FBD20BFCC381C6C6B544C /* Resources */,
+				10B8E8A0858A53041D4D9C80 /* Frameworks */,
 				C056C5B0A1C37CF562DDA802 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -304,6 +317,7 @@
 			);
 			name = Luna;
 			packageProductDependencies = (
+				743D52465C89A089CFE78C19 /* ZIPFoundation */,
 			);
 			productName = Luna;
 			productReference = D399E4DA6B951325F78CD25C /* Luna.app */;
@@ -335,6 +349,9 @@
 			);
 			mainGroup = BCE224A24DD6FDE472019650;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				70E71A00CFB36206A71249EE /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0E258EAC185F83A209546F0A /* Products */;
 			projectDirPath = "";
@@ -649,6 +666,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		70E71A00CFB36206A71249EE /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		743D52465C89A089CFE78C19 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70E71A00CFB36206A71249EE /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 17A65B085E12EE34B8A63E88 /* Project object */;
 }

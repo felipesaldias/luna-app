@@ -5,6 +5,11 @@ options:
     iOS: "26.0"
   xcodeVersion: "16.0"
 
+packages:
+  ZIPFoundation:
+    url: https://github.com/weichsel/ZIPFoundation.git
+    from: "0.9.19"
+
 targets:
   Luna:
     type: application
@@ -13,6 +18,7 @@ targets:
       - Luna
     dependencies:
       - target: LunaWidgetExtension
+      - package: ZIPFoundation
     settings:
       base:
         GENERATE_INFOPLIST_FILE: "YES"
